@@ -2,3 +2,16 @@
 \contentsline {section}{\numberline {1.1}Introduction}{3}{section.1.1}
 \contentsline {chapter}{\numberline {2}\textbf {Structure of the Signal Processing toolbox}}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}Visible Files}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}loader.sce}{5}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}builder.sce}{5}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}demos}{5}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}macros}{5}{subsection.2.1.4}
+\contentsline {subsection}{\numberline {2.1.5}etc}{5}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.6}jar}{5}{subsection.2.1.6}
+\contentsline {subsection}{\numberline {2.1.7}cleaner.sce}{6}{subsection.2.1.7}
+\contentsline {subsection}{\numberline {2.1.8}testfile.sce}{6}{subsection.2.1.8}
+\contentsline {subsection}{\numberline {2.1.9}unloader}{6}{subsection.2.1.9}
+\contentsline {subsection}{\numberline {2.1.10}help}{6}{subsection.2.1.10}
+\contentsline {section}{\numberline {2.2}Hidden Files}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}.gitignore}{6}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}.travis.yml}{7}{subsection.2.2.2}
