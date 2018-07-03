@@ -7,6 +7,7 @@
 \usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage{textcomp}
+\usepackage{amsmath}
 \usepackage{float}
 \graphicspath{Images}
 \begin{document}
@@ -37,15 +38,78 @@
 \tableofcontents
 
 \chapter{\textbf{Introduction}}
-\section{Introduction}
-KiCad is an open-source software tool for the creation of electronic schematic diagrams and PCB artwork.KiCad can be considered mature enough to be used for the successful development and maintenance of complex electronic boards.KiCad does not present any board-size limitation and it can easily handle up to 32 copper layers, up to 14 technical layers and up to 4 auxiliary layers. KiCad can create all the files necessary for building printed boards, Gerber files for photo-plotters, drilling files, component location files and a lot more.Being open source (GPL licensed), KiCad represents the ideal tool for projects oriented towards the creation of electronic hardware with an open-source flavour.
 
-Stable builds
-Stable releases of KiCad can be found in most distribution’s package managers as kicad and kicad-doc. If your distribution does not provide latest stable version, please follow the instruction for unstable builds and select and install the latest stable version.
+\section{About Scilab Signal Processing Toolbox}
+The Scilab Signal Processing toolbox that we are working on has around 280 functionalities. We had been given a task of fixing and developing around 85 functions of the toolbox. 
+This toolbox tries to match the toolbox of same kind in other computational softwares like Octave or MATLAB in almost all of the cases. There are few exceptions in Scilab ,for example, the function \char`\"filter\char`\" in scilab accepts only real vectors or matrices as input arguments but not so in the case of MATLAB and Octave. But these limitations on the output are seen quite less and we have worked on it, seeing to that the values are matched. \\
+\\
+The toolbox has algorithms with highly diverse complexities in the implementations. There are algorithms ranging from simple implementation of windows to complex signal processing algorithms like MUSIC( pmusic and rootmusic ) algorithms,fir1,fir2 and icceps.
+\\
+\\
+Almost fifteen windows necessary for signal processing have been added to the toolbox.\\
+We have also added all the necessary documents and help files for each and every functions that we have worked on.\\
+So ,Scilab being an open source software, most of the signal processing algorithms that are implemented in MATLAB can be implemented easily for free using our toolbox.  
 
-Unstable (nightly development) builds
-Unstable builds are built from the most recent source code. They can
-sometimes have bugs that cause file corruption, generate bad gerbers, etc, but are generally stable and have the latest  features.
+
+\section{git}
+Git is a version control system for tracking changes happening in files of computer, Git along with web based hosting services for repository (like GitHub, ) can be used to coordinating work among multiple people across the world.\\
+We have made the toolbox in our systems as git repositories(local repository) to push it to github (to create a remote repository).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.8\textwidth]{git.png}
+\captionof{figure}{ git commands}
+\end{figure}
+
+\newpage
+
+\section{Travis CI}
+
+Travis is a continuous integration tool , where we can deploy and test our projects which are in the github. We linked our github repository to our travis CI account and then we initiated a build in travis.\\
+Travis just looks into the .travis.yml file in the repository , and based on the script that we have mentioned , it builds our project.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.8\textwidth]{travisconfig.png}
+\captionof{figure}{The basic configuration of the travis engine }
+\end{figure}
+
+We basically build the testfile.sce of the toolbox in Travis CI, which is used to validate the functions present in the toolbox. \\
+As seen in .travis.yml file, commands:\\
+    sudo apt-get install scilab      ……...installs scilab in travis engine\\
+    Scilab -nw -f testfile.sce         ……...executes testfile.sce in a scilab window on the terminal without gui.\\
+
+On successful completion of the build we get an indication as shown:\\
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.8\textwidth]{travissuccess.png}
+\captionof{figure}{Successful build on travis}
+\end{figure}
+
+\newpage
+If the build fails, then we get an indication as follows:\\
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.8\textwidth]{travisfail.png}
+\captionof{figure}{Failure of a build in travis}
+\end{figure}
+It indicates that we have to revisit the testfile to fix the errors or bugs.\\
+After each and every build, be it successful or failed builds, we get notification mails from travis regarding the commit information and the build status.\\
+So each time, we triggered the builds by the entering the desired commit messages of the git repository, to test the toolbox.
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
 
 \chapter{\textbf{Structure of the Signal Processing toolbox}}
 The toolbox has two types of files:
@@ -132,6 +196,68 @@ Travis CI actually provides a default build environment and a default set of ste
 
 The above figure shows the different sections involved in the .travis.yml file.\\
 So each time when a build is triggered by the user, tracis engine actually downloads scilab (as per before\textunderscore install section) and then a new scilab instance is opened in the terminal without any gui (-nw flag) and executes testfile.sce in the toolbox ( because of the -f flag used here).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{\textbf{Issues faced and Solutions}}
+On working on the toolbox, we had faced many issues which we tried to counter them with our own automatations. The issues include :\\
+
+\begin{itemize}
+\item GFORTRAN lib issue\\
+The version of Scilab that has to be used is Scilab 5.5.2 , to run these toolboxes.\\
+We installed Scilab from the official website \url{http://www.scilab.org/download/previous} by choosing Linux OS 64-bit architecture. \\
+To load the FOSSEE\textunderscore Scilab\textunderscore Octave\textunderscore Interface\textunderscore toolbox, we had to fix an issue. \\
+The library file ‘libgfortran.so.3’ present in the location  \\ \char`\"scilab-5.5.2/lib/thirdparty/redist/  \char`\" 
+ had to be moved to the previous directory to load it.This step was important to load the                       FOSSEE\textunderscore Scilab\textunderscore Octave\textunderscore Interface\textunderscore toolbox.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.8\textwidth]{gfortran.png}
+\captionof{figure}{GFORTRAN 1.4 issue }
+\end{figure}
+
+\item The output of few functions were matrices of huge dimensions. These matrices couldn’t be included in the testfile.sce. So we worked on an automation of copying this matrix into a new texfile (if the matrix is square matrix, then we reshaped the matrix by stacking it column wise using command \char`\"matrix \char`\"  ) using the command-\char`\"fprintfMat(\char`\"name\textunderscore of\textunderscore file \char`\" ,desired\textunderscore variable)\char`\" and saved it in macros folder . Then in the the testfile.sce , we scan this text file using the command \char`\" fscanfMat(\char`\"name\textunderscore of\textunderscore file\char`\")\char`\"and store it in dummy variable for comparison.\\
+
+\item Few functions in the toolbox had same names as that of the inbuilt functions. This creates an issue as once the toolbox is built, we could not access the inbuilt functions of scilab. So we changed the names of these functions in the toolbox.The functions include wind.sci and oct\textunderscore interp.sci.
+
+
+\newpage
+
+\item Also while porting the functions from octave to scilab, we faced an issue regarding the inconsistent operations of vectors. In octave, we can perform addition and subtraction between a row vector and column vector as shown\\
+
+
+$\begin{bmatrix}
+ 1&3&4
+\end{bmatrix}$-$\begin{bmatrix}
+1\\
+2\\
+3
+\end{bmatrix}$=$\begin{bmatrix}
+0 & 1 &2 \\
+-1 &0  &1 \\
+ -2& -1 &0
+\end{bmatrix}$ \\
+
+This operation is not possible in scilab and a small operation of such kind in a 350 line code was encountered. We figured out the operation going on in the backend and added that algorithm in to the  corresponding functions. This operation was seen in the function \char`\"residue \char`\".
+
+\item Few functions that had to be ported to scilab ,from octave, had long tree of dependencies,i.e., these functions had inbuilt functions of octave which had to be built in scilab from scratch.(We called it as \char`\"Bottom Up approach\char`\") .
+
+
+
+
+\end{itemize}
 
 
 \newpage
