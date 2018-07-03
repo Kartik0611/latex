@@ -46,15 +46,20 @@ Unstable (nightly development) builds
 Unstable builds are built from the most recent source code. They can
 sometimes have bugs that cause file corruption, generate bad gerbers, etc, but are generally stable and have the latest  features.
 
-\chapter{\textbf{Steps to follow for better understanding of kicad nightly builds for electronic simulation}}
-\section{Steps to follow for better understanding of kicad nightly builds for electronic simulation}
+\chapter{\textbf{Structure of the Signal Processing toolbox}}
+The toolbox has two types of files:
+\section{Visible Files}
 \begin{itemize}
-\item Download Kicad Documentation from \url{http://docs.kicad-pcb.org/stable/en/getting_started_in_kicad.pdf}
-\item Go through the working of Kicad.
-\item Download \url{https://github.com/KiCad/kicad-source-mirror}
-\item Go to demos->simulation where you will find three example circuits
-\item Figure out the working of simulations and adding library files to components as shown in the examples.
-\item  Post questions on the Kicad forum if you are facing any difficulties.
+\item loader.sce
+\item builder.sce
+\item demos
+\item etc
+\item jar
+\item cleaner.sce
+\item testfile.sce
+\item unloader.sce
+\item README.md
+\item help
 \end{itemize}
 
 \newpage
