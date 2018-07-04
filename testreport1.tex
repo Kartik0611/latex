@@ -316,8 +316,10 @@ The library file ‘libgfortran.so.3’ present in the location  \\ \char`\"scil
 \centering
 \includegraphics[width = 0.8\textwidth]{gfortran.png}
 \captionof{figure}{GFORTRAN 1.4 issue }
+\label{gfortran}
 \end{figure}
 
+The figure\ref{gfortran} shows the GFORTRAN 1.4 issue that we had faced in the begining.
 \item The output of few functions were matrices of huge dimensions. These matrices couldn’t be included in the testfile.sce. So we worked on an automation of copying this matrix into a new texfile (if the matrix is square matrix, then we reshaped the matrix by stacking it column wise using command \char`\"matrix \char`\"  ) using the command-\char`\"fprintfMat(\char`\"name\textunderscore of\textunderscore file \char`\" ,desired\textunderscore variable)\char`\" and saved it in macros folder . Then in the the testfile.sce , we scan this text file using the command \char`\" fscanfMat(\char`\"name\textunderscore of\textunderscore file\char`\")\char`\"and store it in dummy variable for comparison.\\
 
 \item Few functions in the toolbox had same names as that of the inbuilt functions. This creates an issue as once the toolbox is built, we could not access the inbuilt functions of scilab. So we changed the names of these functions in the toolbox.The functions include wind.sci and oct\textunderscore interp.sci.
