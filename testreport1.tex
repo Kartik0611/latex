@@ -18,22 +18,30 @@
 \includegraphics[width = 0.4\textwidth]{fossee-logo.png}
 \end{figure}
 
-\title{\textbf{\textbf{Summer Fellowship Report}}\vspace{5mm} \\\small On \\\vspace{5mm} \textbf{\large Spice Simulations using Kicad nightly builds}\vspace{5mm} \\ \vspace{5mm}\small Submitted by\\  \vspace{5mm}  \large \textbf{Akshay NH  and Athul MS}\\ \vspace{5mm}
-\small Under the guidance of \\ \vspace{5mm}
-\large \textbf{Prof.Kannan M. Moudgalya} \vspace{1mm}\\ Chemical Engineering Department  \vspace{1mm} \\IIT Bombay
+\title{\textbf{\textbf{Summer Fellowship Report}}\vspace{3mm} \\\small On \\\vspace{3mm} \textbf{\large FOSSEE Scilab Signal Processing Toolbox and\\ Communication Toolbox}\vspace{3mm} \\ \vspace{3mm}\small Submitted by\\  \vspace{3mm}  \large \textbf{Y Shashi Kiran}\\ \vspace{2mm}  \large \textbf{Kartik Vishnu Hegde}\\ \vspace{2mm}  \large \textbf{Sonu Sharma}\\ \vspace{7mm}
+\small Under the guidance of \\  \vspace{3mm}
+\large \textbf{Prof. Kannan M Moudgalya} \vspace{1mm}\\
+\large \textbf{Prof. Kumar Appaiah} \vspace{5 mm}\\
+\small Mentors
+\\ 
+\vspace{1mm} \large \textbf{Mr Rupak Rokade}\\ 
+\vspace{1mm}  \large \textbf{Mr Sudhakar Kumar}\\  
 }
-\vspace{1cm}
 
 \maketitle
 
 
-\newpage
 \title{\textbf{\textbf{\LARGE 
 \begin{flushleft}
 \textbf{Acknowledgment}
 \end{flushleft}
 }}}
-\large We are extremely thankful to Prof . Kannan Moudgalya for guiding and motivating us throughout the FOSSEE fellowship programme.We would also like to thank our mentors Mrs.Gloria Nandihal and Mr.Athul George for their immense support and advice.Moreover, we are grateful to our fellow friends Mudit Joshi and Ashutosh Gangwar for assisting us with their programming knowledge.Lastly,we extend our warm gratiutude to the managers and staff of FOSSEE for their co-operation and assistance.
+\large \hspace{1.5cm}   The internship opportunity we had with the FOSSEE Team,\\IIT BOMBAY, was a great chance for learning and professional development. Therefore, we consider ourselves as very lucky individuals as we were provided with an opportunity to be a part of it. We are also grateful for having a chance to meet so many wonderful people and professionals across the country who led us through this internship period.\\
+We are using this opportunity to express our deepest gratitude and special thanks to Prof. Kannan M Moudgalya, head of FOSSEE team, IIT Bombay, for giving us an opportunity to be a part of this project.\\
+We express our deepest thanks to Prof. Kumar Appaiah, professor in the Department of Electrical Engineering, IIT Bombay, for taking part in useful decisions and giving necessary advices and guidance to make life easier. We choose this moment to acknowledge his contribution gratefully.\\
+It is our radiant sentiment to place on record our best regards, deepest sense of gratitude to our mentors, Mr Rupak Rokade and Mr Sudhakar Kumar for their continuous support which were extremely valuable for our study both theoretically and practically and helping us to learn a lot many things.\\\\
+We perceive this opportunity as a big milestone in our career development. We will strive to use gained skills and knowledge in the best possible way, and we will continue to work on their improvement, in order to attain desired career objectives. Hope to continue cooperation with all of you in the future.
+
 
 \tableofcontents
 
@@ -59,25 +67,36 @@ We have made the toolbox in our systems as git repositories(local repository) to
 \centering
 \includegraphics[width = 0.8\textwidth]{git.png}
 \captionof{figure}{ git commands}
+\label{gitcommand}
 \end{figure}
 
-\newpage
+
+The figure\ref{gitcommand} shows the process of initializing local git repository.
+
+\section{GitHub}
+
+GitHub is a web-based hosting service for version control using Git.  It is mostly used for computer code. It offers all of the distributed version control and source code management (SCM) functionality of Git as well as adding its own features.\\
+
+We have used github for version control using Git.And we used github for one more major purpose that is linking it with Travis CI , the continuous integration tool , where we can deploy and test our projects which are in the github. The file \char`\".travis.yml\char`\" in github indicates the Travis CI to test our projects. ( See section 2.2.2)\\
+
 
 \section{Travis CI}
-
 Travis is a continuous integration tool , where we can deploy and test our projects which are in the github. We linked our github repository to our travis CI account and then we initiated a build in travis.\\
+
 Travis just looks into the .travis.yml file in the repository , and based on the script that we have mentioned , it builds our project.\\
 
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.8\textwidth]{travisconfig.png}
 \captionof{figure}{The basic configuration of the travis engine }
+\label{travisci}
 \end{figure}
+The figure\ref{travisci} shows the basic configuratrion of Travis CI Engine.\\
 
 We basically build the testfile.sce of the toolbox in Travis CI, which is used to validate the functions present in the toolbox. \\
 As seen in .travis.yml file, commands:\\
     sudo apt-get install scilab      ……...installs scilab in travis engine\\
-    Scilab -nw -f testfile.sce         ……...executes testfile.sce in a scilab window on the terminal without gui.\\
+    scilab -nw -f testfile.sce         ……...executes testfile.sce in a scilab window on the terminal without gui.\\\\
 
 On successful completion of the build we get an indication as shown:\\
 \begin{figure}[H]
@@ -86,7 +105,7 @@ On successful completion of the build we get an indication as shown:\\
 \captionof{figure}{Successful build on travis}
 \end{figure}
 
-\newpage
+
 If the build fails, then we get an indication as follows:\\
 \begin{figure}[H]
 \centering
@@ -197,6 +216,77 @@ Travis CI actually provides a default build environment and a default set of ste
 The above figure shows the different sections involved in the .travis.yml file.\\
 So each time when a build is triggered by the user, tracis engine actually downloads scilab (as per before\textunderscore install section) and then a new scilab instance is opened in the terminal without any gui (-nw flag) and executes testfile.sce in the toolbox ( because of the -f flag used here).
 
+\chapter{\textbf{Our Work}}
+                   
+The toolbox mainly had issues with around 85 functions which were given to us like a problem statement by our mentors to debug. These functions were of two kinds:\\
+
+
+\begin{itemize}
+\item Functions built in Scilab
+\item Functions using Scilab Octave Interface Toolbox\\
+\end{itemize}
+
+The issues with the functions built in Scilab were fixed and every function was added with required documentation , help files and test cases. We have also worked on adding plots in the help files. We have also added equations and matrices in the help files using LaTeX.\\
+Few functions ,of such kind, we worked on are shown below:\\
+Example 1:\\
+\textbf{Medfilt1} : Function for 1D median filtering\\
+Description\\
+y = medfilt1(x)\\
+Applies a 3rd order 1-dimensional median filter to input x along the first non-zero dimension.\\
+The function appropriately pads the signal with zeros at the endings. For a segment, a median is calculated as the middle value (average of two middle values) for odd number number (even number) of data points.\\
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.6\textwidth]{medfilt1.png}
+\captionof{figure}{ plot of original and filtered with median 1D filter}
+\label{medfilt1}
+\end{figure}
+The figure\ref{medfilt1} shows the output plot of the  function medfilt1.
+
+
+Example 2:\\
+\textbf{pchip} : Piecewise Cubic Hermite Interpolating Polynomial (PCHIP)\\
+Description\\
+v = pchip(x,y,xx) \\
+returns a vector of interpolated values p corresponding to the query points in xx. The values of v are determined by shape-preserving piecewise cubic interpolation of x and y.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.6\textwidth]{pchip.png}
+\captionof{figure}{ plot of Interpolation of x and y using PCHIP algorithm}
+\label{pchip}
+\end{figure}
+The figure\ref{pchip} shows the output plot of interpolation using pchip algorithm. \\\\
+
+But there were few functions where we were using the Scilab Octave Interface Toolbox to call few Octave functions. Though we were getting desired output, we were encountering Segmentation-fault (core dumped) issue on exiting the instance. The Scilab instance must essentially exit with a zero, i.e, should exit with exit(0) , for Travis CI to show successful build of the test file. The log was over dumped and was not exiting with exit(0) and the issue we faced is shown below:\\
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = \linewidth]{segfault.png}
+\captionof{figure}{ Segmentation fault}
+\label{segfault}
+\end{figure}
+The figure\ref{segfault} shows the segmentation fault issue that we encountered. \\
+
+
+So after a review by the professor and our mentors, we decided to port the functions which are in Octave Signal package to Scilab. In this process, we encountered few in built functions of Octave, which are not present in Scilab giving the desired output . So we planned, prepared dependency trees and built these function , in a bottom up approach.\\
+
+For example, there is a function called fir1 in the toolbox which is used to implement the FIR filter using window method. This function had fir2 and interp in it which are not there in Scilab. So we built them in Scilab.\\
+Also there is another function called residued, which calls for residue which is an inbuilt function in Octave. To build this function in Scilab, we had to build to build five dependencies. The functions mpoles, deconv, polyreduce, polyval and prepad are these dependant functions which are now added to the toolbox.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -271,12 +361,11 @@ This operation is not possible in scilab and a small operation of such kind in a
 
 
 \begin{itemize}
-\item \url{http://docs.kicad-pcb.org/stable/en/getting_started_in_kicad.pdf}
-\item \url{https://github.com/KiCad/kicad-source-mirror}
-\item  \url{https://github.com/FOSSEE/eSIm-Kicad-Simulations}
-\item \url{ https://forum.kicad.info/}
-\item \url{ http://www.ecircuitcenter.com/Basics.htm}
-\item \url{http://www.ecircuitcenter.com/SPICEsummary.htm}
+\item \url{https://octave.sourceforge.io/functions_by_package.php}
+\item \url{https://octave.org/octave.pdf}
+\item  \url{https://in.mathworks.com/help/signal/}
+\item \url{ https://in.mathworks.com/help/comm/}
+\item \url{ https://en.wikipedia.org/wiki/Window_function}
 \end{itemize}
 \end{document}
 
