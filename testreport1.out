@@ -1,7 +1,7 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.1.1}{About Scilab Signal Processing Toolbox}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{git}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{GitHub}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{About Scilab Communication System Toolbox}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Version Control}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{Travis CI}{chapter.1}% 5
 \BOOKMARK [0][-]{chapter.2}{Structure of the Signal Processing toolbox}{}% 6
 \BOOKMARK [1][-]{section.2.1}{Visible Files}{chapter.2}% 7
@@ -18,5 +18,6 @@
 \BOOKMARK [1][-]{section.2.2}{Hidden Files}{chapter.2}% 18
 \BOOKMARK [2][-]{subsection.2.2.1}{.gitignore}{section.2.2}% 19
 \BOOKMARK [2][-]{subsection.2.2.2}{.travis.yml}{section.2.2}% 20
-\BOOKMARK [0][-]{chapter.3}{Our Work}{}% 21
-\BOOKMARK [0][-]{chapter.4}{Issues faced and Solutions}{}% 22
+\BOOKMARK [1][-]{section.2.3}{Guidelines to use the toolbox}{chapter.2}% 21
+\BOOKMARK [0][-]{chapter.3}{Our Work}{}% 22
+\BOOKMARK [0][-]{chapter.4}{Issues faced and Solutions}{}% 23

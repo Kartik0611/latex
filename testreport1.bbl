@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{matdoc}
+Matlab signal processing toolbox documentation.
+\newblock \url{https://in.mathworks.com/help/signal/}.
+
+\bibitem{oct}
+Octave documentation :.
+\newblock \url{https://octave.sourceforge.io/functions\_by\_package.php}.
+
+\bibitem{wind}
+Signal window reference :.
+\newblock \url{https://en.wikipedia.org/wiki/Window\_function}.
+
+\end{thebibliography}
